@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS idrug.users
 (
 
     id_user BIGSERIAL NOT NULL,
-    firs_name VARCHAR(255) NOT NULL,
+    first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
     age INTEGER NOT NULL,
     sex GENDER NOT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS idrug.drugs_time
 (
     id_drugs_time BIGSERIAL NOT NULL,
     drug_id BIGINT NOT NULL REFERENCES idrug.drugs(id_drug) ON DELETE CASCADE,
-    "time" TIMESTAMP NOT NULL,
+    "time" TIME NOT NULL,
     sick_leave_id BIGINT NOT NULL REFERENCES idrug.sick_leave(id_sick_leave) ON DELETE CASCADE,
     CONSTRAINT pk_drugs_time PRIMARY KEY (id_drugs_time)
 );
