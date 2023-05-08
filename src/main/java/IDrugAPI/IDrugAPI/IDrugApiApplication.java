@@ -11,5 +11,4 @@ public class IDrugApiApplication {
 		SpringApplication.run(IDrugApiApplication.class, args);
 	}
 
-
 }
