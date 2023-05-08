@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name="users_info")
+@Table(schema="idrug", name="users_info")
 @Data
 public class UserInfoEntity {
 
@@ -19,5 +19,9 @@ public class UserInfoEntity {
     @OneToOne
     @JoinColumn(name="user_id")
     private UserEntity user;
+
+    public UserInfoEntity () {
+
+    }
 
 }

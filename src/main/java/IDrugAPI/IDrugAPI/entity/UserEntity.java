@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Entity
-@Table(name="users")
+@Table(schema="idrug", name="users")
 @Data
 public class UserEntity {
 
@@ -34,5 +34,12 @@ public class UserEntity {
 
     @Column(name="password")
     private String password;
+
+//    @OneToOne( mappedBy = "user")
+//    private UserInfoEntity userInfo;
+
+    public UserEntity () {
+
+    }
 
 }

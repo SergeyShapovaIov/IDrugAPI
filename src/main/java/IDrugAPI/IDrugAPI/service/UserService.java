@@ -19,8 +19,6 @@ public class UserService {
 
     public List<UserEntity> getAllUsers() {
 
-        AtomicReference<UserEntity> user = new AtomicReference<>();
-
         List<UserEntity> result = new ArrayList<UserEntity>();
         userRepository.findAll().forEach(result::add);
 
