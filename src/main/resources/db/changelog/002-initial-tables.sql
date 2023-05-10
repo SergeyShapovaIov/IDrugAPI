@@ -4,6 +4,9 @@
 --CREATE TYPE IF NOT EXISTS GENDER AS ENUM  ('Мужчина', 'Женщина');
 
 -- changeset sergeyshapovalov:2
+--CREATE CAST (varchar AS GENDER) WITH INOUT AS IMPLICIT;
+
+-- changeset sergeyshapovalov:3
 CREATE TABLE IF NOT EXISTS idrug.users
 (
 
@@ -18,7 +21,7 @@ CREATE TABLE IF NOT EXISTS idrug.users
 
 );
 
--- changeset sergeyshapovalov:3
+-- changeset sergeyshapovalov:4
 CREATE TABLE IF NOT EXISTS idrug.users_info
 (
     id_user_info BIGSERIAL NOT NULL,
@@ -27,7 +30,7 @@ CREATE TABLE IF NOT EXISTS idrug.users_info
     CONSTRAINT pk_users_info PRIMARY KEY (id_user_info)
 );
 
--- changeset sergeyshapovalov:4
+-- changeset sergeyshapovalov:5
 CREATE TABLE IF NOT EXISTS idrug.sick_leave
 (
     id_sick_leave BIGSERIAL NOT NULL,
@@ -37,7 +40,7 @@ CREATE TABLE IF NOT EXISTS idrug.sick_leave
     CONSTRAINT pk_sick_leave PRIMARY KEY (id_sick_leave)
 );
 
--- changeset sergeyshapovalov:5
+-- changeset sergeyshapovalov:6
 CREATE TABLE IF NOT EXISTS idrug.users_info_sick_leave
 (
     sick_leave_id BIGINT NOT NULL REFERENCES idrug.sick_leave(id_sick_leave) ON DELETE CASCADE,
@@ -45,7 +48,7 @@ CREATE TABLE IF NOT EXISTS idrug.users_info_sick_leave
     CONSTRAINT pk_users_info_sick_leave PRIMARY KEY (sick_leave_id, users_info_id)
 );
 
--- changeset sergeyshapovalov:6
+-- changeset sergeyshapovalov:7
 CREATE TABLE IF NOT EXISTS idrug.pharmacies
 (
     id_pharmacy BIGSERIAL NOT NULL,
@@ -54,7 +57,7 @@ CREATE TABLE IF NOT EXISTS idrug.pharmacies
     CONSTRAINT pk_pharmacies PRIMARY KEY (id_pharmacy)
 );
 
--- changeset sergeyshapovalov:7
+-- changeset sergeyshapovalov:8
 CREATE TABLE IF NOT EXISTS idrug.drugs
 (
     id_drug BIGSERIAL NOT NULL,
@@ -64,7 +67,7 @@ CREATE TABLE IF NOT EXISTS idrug.drugs
     CONSTRAINT pk_drugs PRIMARY KEY (id_drug)
 );
 
--- changeset sergeyshapovalov:8
+-- changeset sergeyshapovalov:9
 CREATE TABLE IF NOT EXISTS idrug.drugs_time
 (
     id_drugs_time BIGSERIAL NOT NULL,
@@ -74,7 +77,7 @@ CREATE TABLE IF NOT EXISTS idrug.drugs_time
     CONSTRAINT pk_drugs_time PRIMARY KEY (id_drugs_time)
 );
 
--- changeset sergeyshapovalov:9
+-- changeset sergeyshapovalov:10
 CREATE TABLE IF NOT EXISTS idrug.drugs_pharmacies
 (
     pharmacy_id BIGINT NOT NULL REFERENCES idrug.pharmacies(id_pharmacy) ON DELETE CASCADE,
@@ -82,7 +85,7 @@ CREATE TABLE IF NOT EXISTS idrug.drugs_pharmacies
     CONSTRAINT pk_drugs_pharmacies PRIMARY KEY (pharmacy_id, drug_id)
 );
 
--- changeset sergeyshapovalov:10
+-- changeset sergeyshapovalov:11
 CREATE TABLE IF NOT EXISTS idrug.diseases
 (
     id_disease BIGSERIAL NOT NULL,
@@ -91,7 +94,7 @@ CREATE TABLE IF NOT EXISTS idrug.diseases
     CONSTRAINT pk_diseases PRIMARY KEY (id_disease)
 );
 
--- changeset sergeyshapovalov:11
+-- changeset sergeyshapovalov:12
 CREATE TABLE IF NOT EXISTS idrug.drugs_diseases
 (
     drug_id BIGINT NOT NULL REFERENCES idrug.drugs(id_drug) ON DELETE CASCADE,

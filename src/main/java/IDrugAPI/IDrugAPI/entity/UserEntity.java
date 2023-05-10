@@ -1,15 +1,24 @@
 package IDrugAPI.IDrugAPI.entity;
 
 
+import IDrugAPI.IDrugAPI.enums.Gender;
 import jakarta.persistence.*;
-import lombok.Data;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+import static IDrugAPI.IDrugAPI.validation.message.UserMessages.EMAIL_CANNOT_BE_EMPTY;
+
 @Entity
 @Table(schema="idrug", name="users")
-@Data
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserEntity {
 
     @Id
@@ -26,9 +35,10 @@ public class UserEntity {
     @Column(name="age")
     private Integer age;
 
-    @Column(name="sex")
-    private String sex;
+    @Enumerated(EnumType.STRING)
+    private Gender sex;
 
+    @NotNull(message = EMAIL_CANNOT_BE_EMPTY) String validEmail
     @Column(name="email")
     private String email;
 
@@ -37,9 +47,5 @@ public class UserEntity {
 
 //    @OneToOne( mappedBy = "user")
 //    private UserInfoEntity userInfo;
-
-    public UserEntity () {
-
-    }
 
 }
